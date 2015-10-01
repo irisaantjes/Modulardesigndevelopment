@@ -6,9 +6,8 @@ this.Photomap = function (params) {
 
     // Define option defaults
     var defaults = {
-        elementID: '',
-        instagram_token: '',
-        instagram_id: '',
+        elementID: null,
+        instagram: null,
         theme: [
             {
                 "featureType": "landscape.man_made",
@@ -169,6 +168,7 @@ this.Photomap = function (params) {
 
             // Process the images
             var i = 0;
+
             for (i = 0; i < photos.data.length; i += 1) {
                 createMarker(photos.data[i], map);
             }
@@ -204,12 +204,23 @@ this.Photomap = function (params) {
 
     // Run Photomap.js
     createMap(function (map) {
-        loadImages(map, 'https://api.instagram.com/v1/users/' + options.instagram_id + '/media/recent/', options.instagram_token, function (error) {
-            if (error) {
-                throw new Error(error);
+
+        if (Object.prototype.toString.call(params.instagram) === '[object Array]') {
+
+            var i = 0;
+            for (i = 0; i < params.instagram.length; i += 1) {
+                createMarker(params.instagram[i], map);
             }
             map.fitBounds(bounds);
-        });
+        } else if (typeof params.instagram === "object") {
+            loadImages(map, 'https://api.instagram.com/v1/users/' + options.instagram.instagram_id + '/media/recent/', options.instagram.instagram_token, function (error) {
+                if (error) {
+                    throw new Error(error);
+                }
+                map.fitBounds(bounds);
+            });
+        }
+
     });
 
 };

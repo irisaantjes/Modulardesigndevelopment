@@ -1,20 +1,27 @@
 <!doctype html><html><head>
 
 <style>
-    #map { height: 700px; }
+    #map-object, #map-array { height: 700px; margin-bottom: 30px; }
 </style>
 
 </head><body>
 
-    <div id="map"></div>
+    <div id="map-object"></div>
+    <div id="map-array"></div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9FJte2Zre1nyzMFutrrbOiQBafdIDUMw"></script>
-<script src="index.js"></script>
+<script src="photomap.js"></script>
 <script>
-    var photomap = new Photomap({
-        elementID: 'map',
-        instagram_token: '',
-        instagram_id: ''
+    var photomap_object = new Photomap({
+        elementID: 'map-object',
+        instagram: {
+            instagram_token: '',
+            instagram_id: ''
+        }
+    });
+    var photomap_array = new Photomap({
+        elementID: 'map-array',
+        instagram: []
     });
 </script>
 
