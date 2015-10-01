@@ -2,7 +2,7 @@
 
 Display your Instagram photos on Google Maps, just like Instagram's Photo Map.
 
-Just fire it up with:
+Download through GitHub or install with Bower: `bower install photomap`. Then just fire it up with:
 
 ```js
 var photomap = new Photomap({

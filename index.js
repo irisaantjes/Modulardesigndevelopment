@@ -145,6 +145,11 @@ this.Photomap = function (params) {
         bounds.extend(marker.position);
     }
 
+    function scriptError(error) {
+        throw new URIError("The script " + error.target.src + " is not accessible.");
+    }
+
+
     // Load photos from Instagram
     function loadImages(map, url, token, callback) {
         var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random()),
@@ -153,6 +158,7 @@ this.Photomap = function (params) {
         url = updateURL(url, 'access_token', token);
         url = updateURL(url, 'callback', callbackName);
         script.src = url;
+        script.onerror = scriptError;
         document.body.appendChild(script);
 
         window[callbackName] = function (photos) {

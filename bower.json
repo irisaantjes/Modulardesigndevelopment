@@ -1,0 +1,25 @@
+{
+  "name": "photomap",
+  "main": "index.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/haydenbleasel/photomap",
+  "authors": [
+    "Hayden Bleasel <haydenbleasel@gmail.com>"
+  ],
+  "description": "Display your Instagram photos on Google Maps, just like Instagram's Photo Map.",
+  "moduleType": [],
+  "keywords": [
+    "instagram",
+    "google",
+    "photo",
+    "map"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
