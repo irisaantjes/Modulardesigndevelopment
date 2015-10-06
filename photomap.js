@@ -4,10 +4,19 @@ this.Photomap = function (params) {
 
     'use strict';
 
+    // Error without package requirements
+    if (!window.google) {
+        throw new Error('Photomap requires the Google Maps JS SDK.');
+    }
+
     // Define option defaults
     var defaults = {
         elementID: null,
         instagram: null,
+        onMarkerClick: function (map, marker) {
+            map.setZoom(8);
+            map.setCenter(marker.getPosition());
+        },
         theme: [
             {
                 "featureType": "landscape.man_made",
@@ -141,9 +150,13 @@ this.Photomap = function (params) {
             }
         });
         marker.setMap(map);
+        marker.addListener('click', function () {
+            options.onMarkerClick(map, marker);
+        });
         bounds.extend(marker.position);
     }
 
+    // Throw a script.onerror error
     function scriptError(error) {
         throw new URIError("The script " + error.target.src + " is not accessible.");
     }
@@ -192,17 +205,14 @@ this.Photomap = function (params) {
         return callback(map);
     }
 
-    // Error without package requirements
-    if (!google) {
-        throw new Error('Photomap.js requires the Google Maps JS SDK.');
-    }
-
     // Create options by extending defaults with the passed in parameters
     if (params && typeof params === "object") {
         options = extendDefaults(defaults, params);
+    } else {
+        throw new Error('Please provide a valid configuration');
     }
 
-    // Run Photomap.js
+    // Run Photomap
     createMap(function (map) {
 
         if (Object.prototype.toString.call(params.instagram) === '[object Array]') {

@@ -1,4 +1,4 @@
-# Photomap.js
+# Photomap
 
 Display your Instagram photos on Google Maps, just like Instagram's Photo Map.
 
@@ -6,9 +6,10 @@ Download through GitHub or install with Bower: `bower install photomap`. Referen
 
 ```js
 var photomap = new Photomap({
-    elementID: 'map',               // The ID of your element where Photomap will be placed
-    instagram: [] || {}             // Array or object, we'll talk about this in a minute
-    theme: [ /* ... */ ]            // An optional Google Maps theme, you can find more here: https://snazzymaps.com/
+    elementID: 'map',                       // The ID of your element where Photomap will be placed
+    instagram: [] || {},                    // Array or object, we'll talk about this in a minute
+    onMarkerClick: function(map, marker)    // The function to call when a marker is clicked
+    theme: [ /* ... */ ]                    // An optional Google Maps theme, you can find more here: https://snazzymaps.com/
 });
 ```
 
@@ -32,9 +33,3 @@ instagram: {
     instagram_id: 'xxxxxx'          // The ID of the Instagram user's feed to download
 }
 ```
-
-
-Things to do:
-
-- Click a photo to open in modal
-- Group photos based on close proximity per zoom level
