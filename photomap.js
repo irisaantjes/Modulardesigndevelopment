@@ -183,7 +183,9 @@ this.Photomap = function (params) {
             var i = 0;
 
             for (i = 0; i < photos.data.length; i += 1) {
-                createMarker(photos.data[i], map);
+                if (photos.data[i].location) {
+                    createMarker(photos.data[i], map);
+                }
             }
             if (photos.pagination && photos.pagination.next_url) {
                 loadImages(map, photos.pagination.next_url, token, callback);
