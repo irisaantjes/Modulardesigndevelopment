@@ -135,7 +135,7 @@ this.Photomap = function (params) {
     // Create a map marker
     function createMarker(photo, map) {
         var marker = new google.maps.Marker({
-            title: photo.caption.text,
+            title: photo.caption ? photo.caption.text : 'Instagram photo',
             position: {
                 lat: photo.location.latitude,
                 lng: photo.location.longitude
