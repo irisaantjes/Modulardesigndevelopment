@@ -1,7 +1,7 @@
 {
   "name": "photomap",
   "main": "photomap.js",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "homepage": "https://github.com/haydenbleasel/photomap",
   "authors": [
     "Hayden Bleasel <haydenbleasel@gmail.com>"
